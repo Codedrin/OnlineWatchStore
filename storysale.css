@@ -1,0 +1,545 @@
+@charset "utf-8";
+
+/******* Fonts Import Start **********/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+/********* Fonts Face CSS End **********/
+
+/******* Common Element CSS Start ******/
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+.clear {
+  clear: both;
+}
+img {
+  max-width: 100%;
+  border: 0px;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+}
+a:focus,
+a:active,
+a:visited,
+a:hover {
+  text-decoration: none;
+  outline: none;
+}
+a:hover {
+  color: #e73700;
+}
+h2 {
+  margin-bottom: 48px;
+  padding-bottom: 16px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  position: relative;
+  text-transform: capitalize;
+}
+h3 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  line-height: 36px;
+}
+/******* Common Element CSS End *********/
+
+/* -------- title style ------- */
+.line-title {
+  position: relative;
+  width: 400px;
+}
+.line-title::before,
+.line-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  border-radius: 2px;
+}
+.line-title::before {
+  width: 100%;
+  background: #f2f2f2;
+}
+.line-title::after {
+  width: 32px;
+  background: #e73700;
+}
+
+/******* Middle section CSS Start ******/
+/* -------- Landing page ------- */
+.game-section {
+  padding: 60px 50px;
+}
+.game-section .owl-stage {
+  margin: 15px 0;
+  display: flex;
+  display: -webkit-flex;
+}
+.game-section .item {
+  margin: 0 15px 60px;
+  width: 320px;
+  height: 400px;
+  display: flex;
+  display: -webkit-flex;
+  align-items: flex-end;
+  -webkit-align-items: flex-end;
+  background: #343434 no-repeat center center / cover;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  cursor: pointer;
+}
+.game-section .item.active {
+  width: 500px;
+  box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
+}
+.game-section .item:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+.game-section .item-desc {
+  padding: 0 24px 12px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transform: translateY(calc(100% - 54px));
+  -webkit-transform: translateY(calc(100% - 54px));
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+}
+.game-section .item.active .item-desc {
+  transform: none;
+  -webkit-transform: none;
+}
+.game-section .item-desc p {
+  opacity: 0;
+  -webkit-transform: translateY(32px);
+  transform: translateY(32px);
+  transition: all 0.4s ease-in-out 0.2s;
+  -webkit-transition: all 0.4s ease-in-out 0.2s;
+}
+.game-section .item.active .item-desc p {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+.game-section .owl-theme.custom-carousel .owl-dots {
+  margin-top: -20px;
+  position: relative;
+  z-index: 5;
+}
+/******** Middle section CSS End *******/
+
+/***** responsive css Start ******/
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  h2 {
+    margin-bottom: 32px;
+  }
+  h3 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  /* -------- Landing page ------- */
+  .game-section {
+    padding: 50px 30px;
+  }
+  .game-section .item {
+    margin: 0 12px 60px;
+    width: 260px;
+    height: 360px;
+  }
+  .game-section .item.active {
+    width: 400px;
+  }
+  .game-section .item-desc {
+    transform: translateY(calc(100% - 46px));
+    -webkit-transform: translateY(calc(100% - 46px));
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  h2 {
+    margin-bottom: 32px;
+  }
+  h3 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .line-title {
+    width: 330px;
+  }
+
+  /* -------- Landing page ------- */
+  .game-section {
+    padding: 50px 30px 40px;
+  }
+  .game-section .item {
+    margin: 0 12px 60px;
+    width: 240px;
+    height: 330px;
+  }
+  .game-section .item.active {
+    width: 360px;
+  }
+  .game-section .item-desc {
+    transform: translateY(calc(100% - 42px));
+    -webkit-transform: translateY(calc(100% - 42px));
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+    line-height: 24px;
+  }
+  .line-title {
+    width: 250px;
+  }
+
+  /* -------- Landing page ------- */
+  .game-section {
+    padding: 30px 15px 20px;
+  }
+  .game-section .item {
+    margin: 0 10px 40px;
+    width: 200px;
+    height: 280px;
+  }
+  .game-section .item.active {
+    width: 270px;
+    box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
+  }
+  .game-section .item-desc {
+    padding: 0 14px 5px;
+    transform: translateY(calc(100% - 42px));
+    -webkit-transform: translateY(calc(100% - 42px));
+  }
+}
+
+nav{
+  width: 100%;
+  background: #000;
+}
+ul{
+  width: 80%;
+  margin: 0 auto;
+  padding: 0;
+}
+ul li{
+  list-style: none;
+  display: inline-block;
+  padding: 20px;
+  color: #fff;
+}
+ul li:hover{
+  background: rgb(103, 0, 0);
+}
+ul li a{
+  color: #fff;
+  text-decoration: none;
+}
+.toggle{
+  width: 100%;
+  padding: 10px 20px;
+  background: rgb(0, 0, 0);
+  text-align: right;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 30px;
+  display: none;
+}
+@media (max-width:768px){
+  .toggle{
+      display: block;
+  }
+  ul{
+      width: 100%;
+      display: none;
+  }
+  ul li{
+      display: block;
+      text-align: center;
+  }
+  .active{
+      display: block;
+  }
+}
+
+
+.card {
+  
+  border: none;
+  box-shadow: 5px 6px 6px 2px #e9ecef;
+  border-radius: 4px;
+}
+
+
+.dots{
+
+  height: 4px;
+width: 4px;
+margin-bottom: 2px;
+background-color: #bbb;
+border-radius: 50%;
+display: inline-block;
+}
+
+.badge{
+
+      padding: 7px;
+      padding-right: 9px;
+  padding-left: 16px;
+  box-shadow: 5px 6px 6px 2px #e9ecef;
+}
+
+.user-img{
+
+  margin-top: 4px;
+}
+
+.check-icon{
+
+  font-size: 17px;
+  color: #c3bfbf;
+  top: 1px;
+  position: relative;
+  margin-left: 3px;
+}
+
+.form-check-input{
+  margin-top: 6px;
+  margin-left: -24px !important;
+  cursor: pointer;
+}
+
+
+.form-check-input:focus{
+  box-shadow: none;
+}
+
+
+.icons i{
+
+  margin-left: 8px;
+}
+.reply{
+
+  margin-left: 12px;
+}
+
+.reply small{
+
+  color: #b7b4b4;
+
+}
+
+
+.reply small:hover{
+
+  color: green;
+  cursor: pointer;
+
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: #444444;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.section-products {
+    padding: 80px 0 54px;
+}
+
+.section-products .header {
+    margin-bottom: 10px;
+}
+
+.section-products .header h3 {
+    font-size: 1rem;
+    color: #fe302f;
+    font-weight: 500;
+}
+
+.section-products .header h2 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #444444; 
+}
+
+.section-products .single-product {
+    margin-bottom: 26px;
+}
+
+.section-products .single-product .part-1 {
+    position: relative;
+    height: 290px;
+    max-height: 290px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.section-products .single-product .part-1::before {
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		transition: all 0.3s;
+}
+
+.section-products .single-product:hover .part-1::before {
+		transform: scale(1.2,1.2) rotate(5deg);
+}
+
+.section-products #product-1 .part-1::before {
+    background: url("featured1.png") no-repeat center;
+    background-size: cover;
+		transition: all 0.3s;
+}
+
+.section-products #product-2 .part-1::before {
+    background: url("featured2.png") no-repeat center;
+    background-size: cover;
+}
+
+.section-products #product-3 .part-1::before {
+    background: url("featured3.png") no-repeat center;
+    background-size: cover;
+}
+
+.section-products #product-4 .part-1::before {
+    background: url("new1.png") no-repeat center;
+    background-size: cover;
+}
+
+.section-products .single-product .part-1 .discount,
+.section-products .single-product .part-1 .new {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    color: #ffffff;
+    background-color: #fe302f;
+    padding: 2px 8px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.section-products .single-product .part-1 .new {
+    left: 0;
+    background-color: #444444;
+}
+
+.section-products .single-product .part-1 ul {
+    position: absolute;
+    bottom: -41px;
+    left: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    opacity: 0;
+    transition: bottom 0.5s, opacity 0.5s;
+}
+
+.section-products .single-product:hover .part-1 ul {
+    bottom: 30px;
+    opacity: 1;
+}
+
+.section-products .single-product .part-1 ul li {
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.section-products .single-product .part-1 ul li a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #ffffff;
+    color: #444444;
+    text-align: center;
+    box-shadow: 0 2px 20px rgb(50 50 50 / 10%);
+    transition: color 0.2s;
+}
+
+.section-products .single-product .part-1 ul li a:hover {
+    color: #fe302f;
+}
+
+.section-products .single-product .part-2 .product-title {
+    font-size: 1rem;
+}
+
+.section-products .single-product .part-2 h4 {
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.section-products .single-product .part-2 .product-old-price {
+    position: relative;
+    padding: 0 7px;
+    margin-right: 2px;
+    opacity: 0.6;
+}
+
+.section-products .single-product .part-2 .product-old-price::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #444444;
+    transform: translateY(-50%);
+}
+
+
+

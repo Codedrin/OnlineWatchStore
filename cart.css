@@ -1,0 +1,887 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;700;800;900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+
+/* Google Font Import - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+body{
+    min-height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
+::selection{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+body.dark{
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+/* ===== Sidebar ===== */
+ .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;  
+}
+.sidebar.close{
+    width: 88px;
+}
+
+/* ===== Reusable code - Here ===== */
+.sidebar li{
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+}
+
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.sidebar .text,
+.sidebar .icon{
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar .text{
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+.sidebar.close .text{
+    opacity: 0;
+}
+/* =========================== */
+
+.sidebar header{
+    position: relative;
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+.sidebar header .logo-text{
+    display: flex;
+    flex-direction: column;
+}
+header .image-text .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+header .image-text .profession{
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+.sidebar header .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img{
+    width: 40px;
+    border-radius: 6px;
+}
+
+.sidebar header .toggle{
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
+}
+
+.sidebar.close .toggle{
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu{
+    margin-top: 40px;
+}
+
+.sidebar li.search-box{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+.sidebar li.search-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: var(--tran-05);
+}
+.sidebar li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.sidebar li a:hover{
+    background-color: var(--primary-color);
+}
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--sidebar-color);
+}
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    color: var(--text-color);
+}
+
+.sidebar .menu-bar{
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+.menu-bar::-webkit-scrollbar{
+    display: none;
+}
+.sidebar .menu-bar .mode{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon{
+    height: 50px;
+    width: 60px;
+}
+
+.mode .sun-moon i{
+    position: absolute;
+}
+.mode .sun-moon i.sun{
+    opacity: 0;
+}
+body.dark .mode .sun-moon i.sun{
+    opacity: 1;
+}
+body.dark .mode .sun-moon i.moon{
+    opacity: 0;
+}
+
+.menu-bar .bottom-content .toggle-switch{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.toggle-switch .switch{
+    position: relative;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+body.dark .switch::before{
+    left: 20px;
+}
+
+.home{
+    position: absolute;
+    top: 0;
+    top: 0;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+.home .text{
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 12px 60px;
+}
+
+.sidebar.close ~ .home{
+    left: 78px;
+    height: 100vh;
+    width: calc(100% - 78px);
+}
+body.dark .home .text{
+    color: var(--text-color);
+}
+ 
+
+:root{
+    font-size: 16px;
+    font-family: "Raleway";
+    --heading-color: hsl(0, 0%, 7%);
+    --date-text-color: hsl(0, 0%, 51%);
+    --previous-price-text-color: hsl(0, 98%, 44%);
+    --current-price-text-color: hsla(0, 0%, 0%, 0.822);
+    --liked-heart-icon-color: hsl(0, 98%, 44%);
+    --heart-icon-color: whitesmoke;
+    --pricing-font-weight: 800;
+    --title-font-weight: 800;
+    --date-font-weight: 550;
+
+    /* Cards colors */
+    --card-main-color : whitesmoke;
+    --card-1-secondary-color: rgb(192, 82, 82);
+    --card-2-secondary-color: rgb(67,53,27);
+    --card-3-secondary-color: rgb(178,180,179);
+    --card-4-secondary-color: rgb(96,109,117);
+}
+
+html{
+    width: 100%;
+    height: 100%;
+}
+
+
+.container input{
+    display: none;
+}
+
+.container{
+    max-width: 100em;
+    /* background-color: lightgreen; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-start;
+    margin: auto;
+    min-height: 30em;
+    padding: 3em 1em 1em 1em;
+    box-sizing: border-box;
+}
+
+/* Card Styling */
+.card-div{
+    width: 20em;
+    min-height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background-color: var(--card-main-color);
+    margin: 0.6em;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* ======== General styling of all cards and heart divs ========== */
+.img-div{
+    width: 100%;
+    height: 8em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+    z-index: 1;
+    border-radius: 0 0 10px 10px;
+}
+
+.img-div img{
+    transform-origin: bottom;
+    transform: translateY(7.5%);
+    transition: transform 0.3s ease-in-out
+}
+
+/* === Styling the like Icon ==== */
+.like-icon-div{
+    padding: 1em 1em 0 1em;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+    font-size: 1.5em;
+    color: var(--heart-icon-color);
+    border-radius:10px 10px 0 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.like-icon-div-child{
+    /* background-color: yellow; */
+    width: 1em;
+    height: 1em;
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.heart-empty{
+    position: absolute;
+    left: 0;
+    opacity: 1;
+}
+
+.heart-fill{
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.25s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+
+/* God of war image and heart-background*/
+.gow-img-div{
+    background-color: var(--card-1-secondary-color);
+}
+
+.gow-img-div img{
+    width: 65%;
+    transform: translateY(7.5%);
+    /* background-color: whitesmoke; */
+}
+
+.card-1 .like-icon-div{
+    background-color: var(--card-1-secondary-color);
+}
+
+
+/* Sekiro image and heart-background */
+.sekiro-img-div{
+    background-color: var(--card-2-secondary-color);
+}
+
+.sekiro-img-div img{
+    width: 45%;
+    transform: translateY(7.5%);
+}
+
+.card-2 .like-icon-div{
+    background-color: var(--card-2-secondary-color);
+}
+
+
+/* Dazai image and heart-background */
+.dazai-img-div{
+    background-color: var(--card-3-secondary-color);
+}
+
+.dazai-img-div img{
+    width: 80%;
+    transform: translateY(7.5%);
+}
+
+.card-3 .like-icon-div{
+    background-color: var(--card-3-secondary-color);
+    
+}
+
+/* U4 image and heart-background*/
+.u4-img-div{
+    background-color: var(--card-4-secondary-color);
+}
+
+.u4-img-div img{
+    width: 50%;
+    transform: translateY(7.5%);
+}
+
+.card-4 .like-icon-div{
+    background-color: var(--card-4-secondary-color);
+}
+
+/* ======== text Container Styling general ======== */
+
+.text-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: yellow; */
+    padding: 0 1.5em;
+    padding-top: 7em;
+    padding-bottom: 1em;
+    box-sizing: border-box;
+}
+
+.text-container .item-name,
+.text-container .date{
+    margin: 0.25em 0;
+    text-align: center;
+}
+
+.text-container .item-name{
+    font-size: 1.2em;
+    font-weight: var(--title-font-weight);
+    color: var(--heading-color);
+}
+
+.text-container .date{
+    font-size: 0.9em;
+    font-weight: var(--date-font-weight);
+    color: var(--date-text-color);
+}
+
+/* === Pricing and cart div  ===== */
+.pricing-and-cart{
+    /* background-color: wheat; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.25em 0 1em 0;
+}
+
+.pricing{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.previous-price{
+    font-size: 0.8rem;
+    font-weight: var(--pricing-font-weight);
+    color: var(--previous-price-text-color);
+    text-decoration: line-through;
+    /* background-color: whitesmoke; */
+    text-align: left;
+}
+
+.current-price{
+    color: var(--current-price-text-color);
+    font-size: 1.3rem;
+    font-weight: var(--pricing-font-weight);
+    /* background-color: yellow; */
+    margin: 0;
+}
+
+.pricing-and-cart{
+    width: 100%;
+}
+
+.fa-shopping-cart{
+    font-size: 1.3rem;
+    top: 0;
+    transform: translateY(50%);
+}
+
+
+/* ====== Hover effects ======= */
+.card-div:hover .img-div img{
+    transform: translateY(7.5%) scale(1.2);
+}
+
+.card-div:hover{
+    transform: translate(0, -10px);
+}
+
+.like-icon-div-child:hover .heart-fill{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.like-icon-div-child:hover .heart-empty{
+    transition-delay: 0.25s;
+    opacity: 0;
+}
+
+#card-1-like:checked ~ .heart-empty,
+#card-2-like:checked ~ .heart-empty,
+#card-3-like:checked ~ .heart-empty,
+#card-4-like:checked ~ .heart-empty{ 
+        opacity: 0;
+}
+
+#card-1-like:checked ~ .heart-fill,
+#card-2-like:checked ~ .heart-fill,
+#card-3-like:checked ~ .heart-fill,
+#card-4-like:checked ~ .heart-fill{
+    animation: like-animation 0.25s ease-in-out forwards;
+}
+
+#card-1-like:not(:checked) ~ .heart-fill,
+#card-2-like:not(:checked) ~ .heart-fill,
+#card-3-like:not(:checked) ~ .heart-fill,
+#card-4-like:not(:checked) ~ .heart-fill{
+    animation: unlike-animation 0.25s ease-in-out ;
+}
+
+
+@keyframes like-animation{
+    0%{
+        opacity: 1;
+        transform: scale(1)
+    }
+    
+    50%{
+        opacity: 1;
+        color: var(--liked-heart-icon-color);
+        transform: scale(0.5);
+    }
+
+    100%{
+        opacity: 1;
+        color: var(--liked-heart-icon-color);
+        transform: scale(1.0);
+    }
+}
+
+@keyframes unlike-animation{
+    0%{
+        opacity: 1;
+        transform: scale(1)
+    }
+    
+    50%{
+        opacity: 1;
+        transform: scale(0.5);
+    }
+
+    100%{
+        opacity: 1;
+        color: var(--heart-icon-color);
+        transform: scale(1.0);
+    }
+}
+
+:root {
+    --stars: url('http://www.harborsailboats.com/wp-content/uploads/2017/04/5a36f9d97d0d54f0a186b4d7fb742ad3_five-stars-salon-review-google-5-star-review-clipart_3000-700.png') right/auto 100% no-repeat;
+  }
+  
+/*  
+ *  Pure CSS star rating that works without reversing order
+ *  of inputs
+ *  -------------------------------------------------------
+ *  NOTE: For the styling to work, there needs to be a radio
+ *        input selected by default. There also needs to be a
+ *        radio input before the first star, regardless of
+ *        whether you offer a 'no rating' or 0 stars option
+ *  
+ *  This codepen uses FontAwesome icons
+ */
+
+ #full-stars-example {
+
+    /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+    .rating-group {
+      display: inline-flex;
+    }
+    
+    /* make hover effect work properly in IE */
+    .rating__icon {
+      pointer-events: none;
+    }
+    
+    /* hide radio inputs */
+    .rating__input {
+     position: absolute !important;
+     left: -9999px !important;
+    }
+  
+    /* set icon padding and size */
+    .rating__label {
+      cursor: pointer;
+      padding: 0 0.1em;
+      font-size: 2rem;
+    }
+    
+    /* set default star color */
+    .rating__icon--star {
+      color: orange;
+    }
+    
+    /* set color of none icon when unchecked */
+    .rating__icon--none {
+      color: #eee;
+    }
+  
+    /* if none icon is checked, make it red */
+    .rating__input--none:checked + .rating__label .rating__icon--none {
+      color: red;
+    }
+  
+    /* if any input is checked, make its following siblings grey */
+    .rating__input:checked ~ .rating__label .rating__icon--star {
+      color: #ddd;
+    }
+  
+    /* make all stars orange on rating group hover */
+    .rating-group:hover .rating__label .rating__icon--star {
+      color: orange;
+    }
+  
+    /* make hovered input's following siblings grey on hover */
+    .rating__input:hover ~ .rating__label .rating__icon--star {
+      color: #ddd;
+    }
+    
+    /* make none icon grey on rating group hover */
+    .rating-group:hover .rating__input--none:not(:hover) + .rating__label .rating__icon--none {
+       color: #eee;
+    }
+  
+    /* make none icon red on hover */
+    .rating__input--none:hover + .rating__label .rating__icon--none {
+      color: red;
+    }
+  }
+  
+  #half-stars-example {
+  
+    /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+    .rating-group {
+      display: inline-flex;
+    }
+    
+    /* make hover effect work properly in IE */
+    .rating__icon {
+      pointer-events: none;
+    }
+    
+    /* hide radio inputs */
+    .rating__input {
+     position: absolute !important;
+     left: -9999px !important;
+    }
+  
+    /* set icon padding and size */
+    .rating__label {
+      cursor: pointer;
+      /* if you change the left/right padding, update the margin-right property of .rating__label--half as well. */
+      padding: 0 0.1em;
+      font-size: 2rem;
+    }
+  
+    /* add padding and positioning to half star labels */
+    .rating__label--half {
+      padding-right: 0;
+      margin-right: -0.6em;
+      z-index: 2;
+    }
+    
+    /* set default star color */
+    .rating__icon--star {
+      color: orange;
+    }
+    
+    /* set color of none icon when unchecked */
+    .rating__icon--none {
+      color: #eee;
+    }
+  
+    /* if none icon is checked, make it red */
+    .rating__input--none:checked + .rating__label .rating__icon--none {
+      color: red;
+    }
+  
+    /* if any input is checked, make its following siblings grey */
+    .rating__input:checked ~ .rating__label .rating__icon--star {
+      color: #ddd;
+    }
+    
+    /* make all stars orange on rating group hover */
+    .rating-group:hover .rating__label .rating__icon--star,
+    .rating-group:hover .rating__label--half .rating__icon--star {
+      color: orange;
+    }
+  
+    /* make hovered input's following siblings grey on hover */
+    .rating__input:hover ~ .rating__label .rating__icon--star,
+    .rating__input:hover ~ .rating__label--half .rating__icon--star {
+      color: #ddd;
+    }
+    
+    /* make none icon grey on rating group hover */
+    .rating-group:hover .rating__input--none:not(:hover) + .rating__label .rating__icon--none {
+       color: #eee;
+    }
+  
+    /* make none icon red on hover */
+    .rating__input--none:hover + .rating__label .rating__icon--none {
+      color: red;
+    }
+  }
+  
+  #full-stars-example-two {
+  
+    /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+    .rating-group {
+      display: inline-flex;
+    }
+    
+    /* make hover effect work properly in IE */
+    .rating__icon {
+      pointer-events: none;
+    }
+    
+    /* hide radio inputs */
+    .rating__input {
+     position: absolute !important;
+     left: -9999px !important;
+    }
+    
+    /* hide 'none' input from screenreaders */
+    .rating__input--none {
+      display: none
+    }
+  
+    /* set icon padding and size */
+    .rating__label {
+      cursor: pointer;
+      padding: 0 0.1em;
+      font-size: 2rem;
+    }
+    
+    /* set default star color */
+    .rating__icon--star {
+      color: orange;
+    }
+  
+    /* if any input is checked, make its following siblings grey */
+    .rating__input:checked ~ .rating__label .rating__icon--star {
+      color: #ddd;
+    }
+    
+    /* make all stars orange on rating group hover */
+    .rating-group:hover .rating__label .rating__icon--star {
+      color: orange;
+    }
+  
+    /* make hovered input's following siblings grey on hover */
+    .rating__input:hover ~ .rating__label .rating__icon--star {
+      color: #ddd;
+    }
+  
+}
+
+/* Ripple effect */
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+.ripple:hover {
+  background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+}
+.ripple:active {
+  background-color: #6eb9f7;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+/* Button style */
+button {
+  border: none;
+  border-radius: 2px;
+  padding: 12px 82px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: white;
+  background-color: #2196f3;
+  box-shadow: 0 0 4px #999;
+  outline: none;
+}
